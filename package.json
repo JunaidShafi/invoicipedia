@@ -20,10 +20,10 @@
     "drizzle-kit": "^0.26.2",
     "drizzle-orm": "^0.35.2",
     "lucide-react": "^0.453.0",
-    "next": "14.2.15",
+    "next": "^15.0.0-rc.1",
     "pg": "^8.13.0",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^19.0.0-rc-65a56d0e-20241020",
+    "react-dom": "^19.0.0-rc-65a56d0e-20241020",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
   },

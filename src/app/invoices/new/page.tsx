@@ -1,5 +1,5 @@
 "use client";
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useState, startTransition } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -12,9 +12,12 @@ export default function NewInvoices() {
     e.preventDefault();
     if (state === "pending") return;
     setState("pending");
-    const formData = new FormData(e.target as HTMLFormElement);
-    await createAction(formData);
-
+    const target = e.target as HTMLFormElement;
+    //
+    startTransition(async () => {
+      const formData = new FormData(target);
+      await createAction(formData);
+    });
   }
   return (
     <div className=" my-11 flex flex-col   mx-36  max-w-2xl ">
@@ -56,7 +59,7 @@ export default function NewInvoices() {
           <Textarea id="description" name="description" />
         </div>
 
-        <SubmitButton/>
+        <SubmitButton />
       </form>
     </div>
   );
