@@ -8,16 +8,13 @@ import { SubmitButton } from "@/components/SubmitButton";
 
 export default function NewInvoices() {
   const [state, setState] = useState("ready");
-  const [loading, setLoading] = useState(false);
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
     if (state === "pending") return;
     setState("pending");
-    setLoading((prev) => !prev);
-    console.log(loading);
     const formData = new FormData(e.target as HTMLFormElement);
     await createAction(formData);
-    
+
   }
   return (
     <div className=" my-11 flex flex-col   mx-36  max-w-2xl ">
@@ -59,7 +56,7 @@ export default function NewInvoices() {
           <Textarea id="description" name="description" />
         </div>
 
-        <SubmitButton state={loading} />
+        <SubmitButton/>
       </form>
     </div>
   );
