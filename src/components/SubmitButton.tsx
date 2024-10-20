@@ -10,7 +10,7 @@ export function SubmitButton() {
     <div className="mt-4">
       <Button className="w-full ">
         {!pending ? (
-          <span className="font-semibold">Sign In</span>
+          <span className="font-semibold">Submit</span>
         ) : (
           <span className="font-semibold animate-spin">
             <LoaderCircle />

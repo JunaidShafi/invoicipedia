@@ -5,19 +5,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { createAction } from "@/app/actions";
 import { SubmitButton } from "@/components/SubmitButton";
+import Form from "next/form";
 
 export default function NewInvoices() {
   const [state, setState] = useState("ready");
   async function handleSubmit(e: SyntheticEvent) {
-    e.preventDefault();
-    if (state === "pending") return;
+    if (state === "pending") {
+      e.preventDefault();
+      return;
+    }
     setState("pending");
-    const target = e.target as HTMLFormElement;
-    //
-    startTransition(async () => {
-      const formData = new FormData(target);
-      await createAction(formData);
-    });
   }
   return (
     <div className=" my-11 flex flex-col   mx-36  max-w-2xl ">
@@ -25,7 +22,7 @@ export default function NewInvoices() {
       <h1 className="text-sm font-bold md:text-4xl py-5 ">
         Create a New Invoice
       </h1>
-      <form
+      <Form
         action={createAction}
         onSubmit={handleSubmit}
         className="my-2 max-w-lg"
@@ -60,7 +57,7 @@ export default function NewInvoices() {
         </div>
 
         <SubmitButton />
-      </form>
+      </Form>
     </div>
   );
 }
